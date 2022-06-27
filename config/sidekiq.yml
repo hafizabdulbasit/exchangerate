@@ -1,0 +1,3 @@
+:schedule:
+  FetchExchnageRateJob:
+    cron: '0 0 * * *'   # Runs at 12 AM

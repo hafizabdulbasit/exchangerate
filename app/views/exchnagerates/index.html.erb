@@ -1,0 +1,46 @@
+<div class="container">
+  <% unless @rates.present? %>
+    <div class="row mt-5">
+      <div class="col-sm-12 d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= form_with url: "/exchnagerates", method: :post do |form| %>
+          <%= form.submit "Fetch Exchnage Rates", class: "btn btn-primary me-md-2" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Table</th>
+        <th scope="col">Code</th>
+        <th scope="col">currency</th>
+        <th scope="col">mid</th>
+        <th scope="col">Effective Date</th>
+        <th scope="col">No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rates.present? %>
+        <% @rates.each_with_index do |rate, i|%>
+          <tr>
+            <th scope="row"><%= i + 1%></th>
+            <td><%= rate.table %></td>
+            <td><%= rate.code %></td>
+            <td><%= rate.currency %></td>
+            <td><%= rate.mid %></td>
+            <td><%= rate.effective_date %></td>
+            <td><%= rate.no %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr> 
+          <p class="text-muted row">
+            No Rates Are Available
+          </p>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @rates, next_label: ">", previous_label: "<", renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
