@@ -6,8 +6,6 @@ For setup Please follow the instructions below
 
 * This is the app for fetching exchange rates of different curriencies from NBP api.
 * This app Provides the end point to view echange rate variation between two dates or specifix echange rate for a particlar currency on a paticular date.
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do You get set up? ###
 
@@ -22,7 +20,7 @@ For setup Please follow the instructions below
 
 #### Add database.yml into config/ folder create file and paste the below code into that file
 * don't forget to add username and password of your local database.
-	* default: &default
+	* `default: &default
 		  adapter: postgresql
 		  encoding: unicode
 		  # For details on connection pooling, see rails configuration guide
@@ -36,7 +34,7 @@ For setup Please follow the instructions below
 		  database: exchange_rates_development
 		test:
 		  <<: *default
-		  database: exchange_rates_test
+		  database: exchange_rates_test`
 
 * run `rails db:setup`
 * run rails server with `rails s`
